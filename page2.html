@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction - CloudCubes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative; /* Added for absolute positioning */
+        }
+        .home-button {
+            position: absolute; /* Positioning the button absolutely */
+            top: 10px; /* Distance from the top */
+            left: 10px; /* Distance from the left */
+            padding: 10px 15px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #5A67D8; /* Same color as other buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #434190;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #4A90E2;
+            margin-bottom: 0.5em;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #5A67D8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+    <button class="home-button" onclick="location.href='index.html'">Home</button> <!-- Top left Home button -->
+    <div class="container">
+        <h1>Introduction</h1>
+        <p>This page introduces the features and benefits of CloudCubes.</p>
+        <!-- Removed the centered Home button link -->
+    </div>
+</body>
+</html>

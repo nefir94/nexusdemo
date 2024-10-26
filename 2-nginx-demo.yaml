@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: customer-demostration
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;  # Adjust as necessary
+    }
+
+    http {
+        server {
+            listen 80;
+
+            # Serve HTML interface
+            location / {
+                root /usr/share/nginx/html;
+                index index.html;
+            }
+
+            # Nginx status page for active connections
+            location /status {
+                stub_status on;
+                allow all;
+            }
+        }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-demo
+  namespace: customer-demostration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-demo
+  template:
+    metadata:
+      labels:
+        app: nginx-demo
+    spec:
+      containers:
+      - name: nginx-demo
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf           
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+      volumes:
+      - name: html-volume
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config
+
