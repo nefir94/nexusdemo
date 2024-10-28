@@ -14,7 +14,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain    
   nfs:
-    path: /mnt/Cust_pool/fshop_nfs
+    path: /mnt/Cust_pool/maps
     server: 172.16.252.21  
 ---
 apiVersion: v1
